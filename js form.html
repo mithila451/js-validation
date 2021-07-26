@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS Form</title>
+</head>
+<body>
+
+	<h1>JS Form</h1>
+
+	<form name="jsForm" action="JSFormAction.php" onsubmit="return validate()" method="POST">
+
+
+		<label for="firstname">Firstname:</label>
+		<input type="text" name="Firstname" id="firstname">
+
+		<br><br>
+
+		<label for="lastname">Lastname:</label>
+		<input type="text" name="Lastname" id="lastname">
+
+		<br><br>
+
+		<label for = "gender">Gender:</label>
+        <input type="radio" name="gender" id="male" value="male">
+        <label for = "male"> Male </label>
+        <input type="radio" name="gender" id="female" value="female">
+        <label for = "female"> Female </label>
+        <br><br>
+
+        <label for = "ageDate"> DOB:</label>
+        <input type="date" name="ageDate" id="ageDate">
+        <br><br>
+
+        <label for = "religion">Religion: </label>
+        <select id= "religion" name="religion">
+	    <option value= "Islam">Islam</option>
+	    <option value= "Hindu">Hindu</option>
+	    <option value= "Christian">Christian</option>
+	    <option value= "Other">Other</option>
+        </select>
+        <br><br>
+        <h3>Contact Information</h3>
+        <label for = "presentaddress"> Present Address: </label>
+        <input type="text" name="presentaddress" id="presentaddress">
+        <br><br>
+
+        <label for = "parmanentaddress"> Parmanent Address: </label>
+        <input type="text" name="parmanentaddress" id="parmanentaddress">
+        <br><br>
+
+        <label for = "phone"> Phone: </label>
+        <input type="tel" name="phone" id="phone" >
+        <br><br>
+
+        <label for = "email"> Email: </label>
+        <input type="email" name="email" id="email">
+        <br><br>
+
+        <label for = "website"> Personal Website link: </label>
+        <input type="url" name="website" id="website">
+        <br><br>
+
+		<h3>Account Information</h3>
+        
+		<label for="username">Username:</label>
+		<input type="text" name="username" id="username">
+
+		<br><br>
+
+
+		<label for="password">Password:</label>
+		<input type="password" name="password" id="password">
+
+		<br><br>
+
+		<input type="submit" name="submit" value="Submit">
+
+	</form>
+
+	<p id="errorMsg"></p>
+
+	<script>
+			function validate() {
+				var isValid = false;
+				
+				var firstname = document.forms["jsForm"]["firstname"].value;
+				var lastname = document.forms["jsForm"]["lastname"].value;
+				var gender = document.forms["jsForm"]["gender"].value;
+				var DoB = document.forms["jsForm"]["DoB"].value;
+				var religion = document.forms["jsForm"]["religion"].value;
+
+				var presntaddress = document.forms["jsForm"]["presentaddress"].value;
+				var parmaentaddress = document.forms["jsForm"]["parmaentaddress"].value;
+				var email = document.forms["jsForm"]["email"].value;
+				var phone = document.forms["jsForm"]["phone"].value;
+
+				var username = document.forms["jsForm"]["username"].value;
+				var password = document.forms["jsForm"]["password"].value;
+
+
+				if (name.value == "") {
+                window.alert("Please enter your name.");
+                name.focus();
+                return false;
+                }
+                 if (address.value == "") {
+                 window.alert("Please enter your address.");
+                 address.focus();
+                 return false;
+                }
+  
+                if (email.value == "") {
+                window.alert(
+                "Please enter a valid e-mail address.");
+                email.focus();
+                return false;
+                }
+  
+                if (phone.value == "") {
+                window.alert(
+                "Please enter your telephone number.");
+                phone.focus();
+                return false;
+                }
+
+
+
+
+				
+
+	              if(username == "" || password == "") {
+				  document.getElementById("errorMsg").innerHTML = "<b>Please fill up the form properly.</b>";
+				  document.getElementById("errorMsg").style.color = "red";
+				}
+				else {
+					isValid = true;
+				}
+
+				return isValid;
+			}
+		</script>
+
+</body>
+</html>
