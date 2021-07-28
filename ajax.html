@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ajax</title>
+</head>
+<body>
+
+	<h1>Ajax</h1>
+
+
+
+	    <label for="firstname">Firstname:</label>
+		<input type="text" name="Firstname" id="firstname">
+
+		<br><br>
+
+		<label for="lastname">Lastname:</label>
+		<input type="text" name="Lastname" id="lastname">
+
+		<br><br>
+
+		<label for = "gender">Gender:</label>
+        <input type="radio" name="gender" id="male" value="male">
+        <label for = "male"> Male </label>
+        <input type="radio" name="gender" id="female" value="female">
+        <label for = "female"> Female </label>
+        <br><br>
+
+        <label for = "ageDate"> DOB:</label>
+        <input type="date" name="ageDate" id="ageDate">
+        <br><br>
+
+        <label for = "religion">Religion: </label>
+        <select id= "religion" name="religion">
+	    <option value= "Islam">Islam</option>
+	    <option value= "Hindu">Hindu</option>
+	    <option value= "Christian">Christian</option>
+	    <option value= "Other">Other</option>
+        </select>
+        <br><br>
+        <h3>Contact Information</h3>
+        <label for = "presentaddress"> Present Address: </label>
+        <input type="text" name="presentaddress" id="presentaddress">
+        <br><br>
+
+        <label for = "parmanentaddress"> Parmanent Address: </label>
+        <input type="text" name="parmanentaddress" id="parmanentaddress">
+        <br><br>
+
+        <label for = "phone"> Phone: </label>
+        <input type="tel" name="phone" id="phone" >
+        <br><br>
+
+        <label for = "email"> Email: </label>
+        <input type="email" name="email" id="email">
+        <br><br>
+
+        <label for = "website"> Personal Website link: </label>
+        <input type="url" name="website" id="website">
+        <br><br>
+
+        <h3>Account Information</h3>
+		
+	    <label for="username">Username:</label>
+	    <input type="text" name="username" id="username">
+
+	    <br><br>
+        
+
+	    <label for="password">Password:</label>
+	    <input type="password" name="password" id="password">
+
+	    <br><br>
+
+	    <button id="submit" onclick="submit()">Submit</button>
+
+	    <p id="p1"></p>
+
+	    <br>
+	    <br>
+	    <br>
+
+	<h1>Seach By Id </h1>
+
+	<label for="searchKey">Id:</label>
+	<input type="number" name="searchKey" id="searchKey">
+
+	<button id="search" onclick="search()">Search</button>
+
+	<p id="p2"></p>
+
+	<script>
+		
+		function submit() {
+
+
+			var firstname = document.getElementById("firstname").value;
+			var lastname = document.getElementById("lastname").value;
+			var gender = document.getElementById("gender").value;
+			var DoB = document.getElementById("DoB").value;
+			var religion = document.getElementById("religion").value;
+			var phone = document.getElementById("phone").value;
+			var email = document.getElementById("email").value;
+
+			var username = document.getElementById("username").value;
+			var password = document.getElementById("password").value;
+
+
+             if(firstname == "" || lastname == "") {
+				document.getElementById("p1").innerHTML = "Fill up the form properly";
+				document.getElementById("p1").style.color = "red";
+			}
+			else {
+
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if(this.readyState == 4 && this.status == 200) {
+						document.getElementById("p1").innerHTML = xhttp.responseText;
+						document.getElementById("p1").style.color = "green";
+					}
+				}
+
+				xhttp.open("POST", "AjaxAction.php", true);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send("firstname="+lastname+"&firstname");
+			}
+             
+
+			if(username == "" || password == "") {
+				document.getElementById("p1").innerHTML = "Fill up the form properly";
+				document.getElementById("p1").style.color = "red";
+			}
+
+			else {
+
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if(this.readyState == 4 && this.status == 200) {
+						document.getElementById("p1").innerHTML = xhttp.responseText;
+						document.getElementById("p1").style.color = "green";
+					}
+				}
+
+				xhttp.open("POST", "AjaxAction.php", true);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send("username="+username+"&password="+password);
+			}
+		}
+
+		function search() {
+			var searchKey = document.getElementById("searchKey").value;
+
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if(this.readyState == 4 && this.status == 200) {
+					document.getElementById("p2").innerHTML = xhttp.responseText;
+				}
+			}
+
+			xhttp.open("GET", "AjaxAction.php?searchKey=" + searchKey, true);
+			xhttp.send();
+		}
+
+	</script>
+
+</body>
+</html># Ajax
